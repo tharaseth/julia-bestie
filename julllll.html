@@ -1,0 +1,1123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Julia ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    font-family: "DM Sans", sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(circle at 15% 20%, #ff5ca8 0%, transparent 25%),
+        radial-gradient(circle at 85% 15%, #9d6cff 0%, transparent 27%),
+        radial-gradient(circle at 50% 100%, #ff7c9b 0%, transparent 30%),
+        linear-gradient(135deg, #16091d, #26102f 45%, #13081b);
+
+    position: relative;
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 20%,
+            rgba(0,0,0,.35) 100%
+        );
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.stars {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 18px #ffb6df;
+
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+
+    0%,100% {
+        opacity: .15;
+        transform: scale(.6);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+}
+
+
+/* =========================================================
+   FLOATING ORBS
+========================================================= */
+
+.orb {
+    position: fixed;
+
+    border-radius: 50%;
+
+    filter: blur(50px);
+
+    pointer-events: none;
+
+    opacity: .35;
+
+    z-index: 0;
+
+    animation: floatOrb 12s infinite alternate ease-in-out;
+}
+
+.orb.one {
+    width: 280px;
+    height: 280px;
+
+    background: #ff4f9a;
+
+    top: 10%;
+    left: -100px;
+}
+
+.orb.two {
+    width: 320px;
+    height: 320px;
+
+    background: #875cff;
+
+    right: -120px;
+    top: 35%;
+
+    animation-delay: -4s;
+}
+
+.orb.three {
+    width: 260px;
+    height: 260px;
+
+    background: #ff789c;
+
+    left: 40%;
+    bottom: -120px;
+
+    animation-delay: -8s;
+}
+
+@keyframes floatOrb {
+
+    from {
+        transform: translate(0,0) scale(1);
+    }
+
+    to {
+        transform: translate(70px,-50px) scale(1.2);
+    }
+}
+
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+.hearts {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+.heart {
+    position: absolute;
+
+    bottom: -50px;
+
+    color: rgba(255,255,255,.75);
+
+    font-size: 18px;
+
+    animation:
+        rise 9s linear forwards;
+}
+
+@keyframes rise {
+
+    0% {
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(0deg)
+            scale(.5);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .8;
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            translateX(var(--move))
+            rotate(360deg)
+            scale(1.3);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main {
+    position: relative;
+
+    z-index: 5;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px 20px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+    width: min(850px, 95vw);
+
+    padding: 75px 65px;
+
+    text-align: center;
+
+    border-radius: 40px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.13),
+            rgba(255,255,255,.045)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.18);
+
+    backdrop-filter: blur(30px);
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.35),
+        inset 0 1px rgba(255,255,255,.2);
+
+    animation: cardEnter 1.5s cubic-bezier(.2,.8,.2,1);
+
+    transition: .7s ease;
+}
+
+@keyframes cardEnter {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(50px)
+            scale(.94);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   TOP LABEL
+========================================================= */
+
+.label {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 18px;
+
+    margin-bottom: 30px;
+
+    border-radius: 100px;
+
+    border:
+        1px solid rgba(255,255,255,.18);
+
+    background:
+        rgba(255,255,255,.08);
+
+    color: #ffd7eb;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   MAIN TITLE
+========================================================= */
+
+h1 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(75px, 13vw, 150px);
+
+    font-weight: 600;
+
+    line-height: .78;
+
+    margin-bottom: 35px;
+
+    letter-spacing: -5px;
+}
+
+.name {
+    display: inline-block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffb5d7,
+            #ffffff,
+            #e4b7ff,
+            #ff8fc5
+        );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation:
+        nameGlow 5s linear infinite;
+}
+
+@keyframes nameGlow {
+
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 300%;
+    }
+}
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.subtitle {
+
+    max-width: 570px;
+
+    margin: auto;
+
+    color: rgba(255,255,255,.72);
+
+    font-size: 18px;
+
+    font-weight: 300;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.divider {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin: 35px 0;
+}
+
+.divider::before,
+.divider::after {
+
+    content: "";
+
+    width: 80px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.35)
+        );
+}
+
+.divider::after {
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.35),
+            transparent
+        );
+}
+
+.divider span {
+    color: #ff9fcb;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.love-btn {
+
+    position: relative;
+
+    margin-top: 15px;
+
+    padding: 18px 35px;
+
+    border: none;
+
+    border-radius: 100px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            100deg,
+            #ff4d98,
+            #b05cff,
+            #ff649e
+        );
+
+    background-size: 200%;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    letter-spacing: .4px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 40px rgba(255,75,153,.35);
+
+    transition: .35s;
+
+    animation:
+        buttonGradient 4s linear infinite;
+}
+
+@keyframes buttonGradient {
+
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 200%;
+    }
+}
+
+.love-btn:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.04);
+
+    box-shadow:
+        0 20px 55px rgba(255,75,153,.5);
+}
+
+.love-btn:active {
+
+    transform: scale(.96);
+}
+
+
+/* =========================================================
+   SECRET MESSAGE
+========================================================= */
+
+.message {
+
+    max-height: 0;
+
+    opacity: 0;
+
+    overflow: hidden;
+
+    transition:
+        max-height 1.2s ease,
+        opacity .8s ease,
+        margin 1s ease;
+}
+
+.message.show {
+
+    max-height: 600px;
+
+    opacity: 1;
+
+    margin-top: 45px;
+}
+
+.message-line {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 29px;
+
+    line-height: 1.5;
+
+    color: rgba(255,255,255,.9);
+
+    margin-bottom: 15px;
+}
+
+.message-line strong {
+
+    color: #ffb1d3;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   FINAL QUOTE
+========================================================= */
+
+.quote {
+
+    margin-top: 35px;
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    border:
+        1px solid rgba(255,255,255,.1);
+}
+
+.quote p {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 25px;
+
+    line-height: 1.5;
+
+    color: #ffe5f1;
+}
+
+
+/* =========================================================
+   HEART
+========================================================= */
+
+.big-heart {
+
+    display: inline-block;
+
+    font-size: 55px;
+
+    margin-bottom: 20px;
+
+    filter:
+        drop-shadow(
+            0 0 20px rgba(255,80,150,.7)
+        );
+
+    animation:
+        heartbeat 1.7s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.18);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.12);
+    }
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    position: fixed;
+
+    bottom: 18px;
+
+    left: 0;
+
+    width: 100%;
+
+    text-align: center;
+
+    z-index: 10;
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width: 650px) {
+
+    main {
+        padding: 30px 15px;
+    }
+
+    .card {
+        padding: 55px 25px;
+
+        border-radius: 30px;
+    }
+
+    h1 {
+        font-size: 75px;
+
+        letter-spacing: -3px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    .message-line {
+        font-size: 24px;
+    }
+
+    .quote p {
+        font-size: 21px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     BACKGROUND
+====================================================== -->
+
+<div class="stars" id="stars"></div>
+
+<div class="orb one"></div>
+<div class="orb two"></div>
+<div class="orb three"></div>
+
+<div class="hearts" id="hearts"></div>
+
+
+<!-- ======================================================
+     MAIN
+====================================================== -->
+
+<main>
+
+    <div class="card">
+
+        <div class="label">
+            ✦ A little universe for you
+        </div>
+
+
+        <h1>
+            For
+            <span class="name">Julia</span>
+        </h1>
+
+
+        <p class="subtitle">
+
+            In a world full of ordinary moments,
+            some people have this beautiful way
+            of making everything feel a little
+            more magical.
+
+        </p>
+
+
+        <div class="divider">
+            <span>♡</span>
+        </div>
+
+
+        <button class="love-btn" onclick="reveal()">
+
+            Open your little surprise
+            ♡
+
+        </button>
+
+
+        <!-- SECRET MESSAGE -->
+
+        <div class="message" id="message">
+
+            <div class="big-heart">
+                💗
+            </div>
+
+
+            <p class="message-line">
+
+                Julia...
+
+            </p>
+
+
+            <p class="message-line">
+
+                You are one of those rare people
+                who can turn a normal day into
+                <strong>a memory.</strong>
+
+            </p>
+
+
+            <p class="message-line">
+
+                Your laugh.
+                Your craziness.
+                Your random moments.
+
+            </p>
+
+
+            <p class="message-line">
+
+                Somehow...
+
+                they make life
+                <strong>better.</strong>
+
+            </p>
+
+
+            <div class="quote">
+
+                <p>
+
+                    "Some friendships don't need
+                    a reason to exist.
+
+                    They simply become
+                    one of the reasons
+                    life feels beautiful."
+
+                </p>
+
+            </div>
+
+
+            <div class="divider">
+                <span>✦</span>
+            </div>
+
+
+            <p class="message-line">
+
+                And that's why...
+
+            </p>
+
+
+            <p class="message-line">
+
+                I'm really,
+                really lucky
+
+                to call you
+
+                <strong>my bestie.</strong>
+
+            </p>
+
+
+            <div class="big-heart">
+                💖
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<div class="footer">
+
+    made with a little love ♡ for Julia
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   STARS
+========================================================= */
+
+const stars = document.getElementById("stars");
+
+for(let i = 0; i < 100; i++) {
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+    const size =
+        Math.random() * 3 + 1;
+
+    star.style.width =
+        size + "px";
+
+    star.style.height =
+        size + "px";
+
+    star.style.animationDelay =
+        Math.random() * 5 + "s";
+
+    stars.appendChild(star);
+}
+
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+const hearts =
+    document.getElementById("hearts");
+
+const heartSymbols = [
+    "♡",
+    "♥",
+    "♡",
+    "✦",
+    "💗",
+    "💕"
+];
+
+
+function createHeart() {
+
+    const heart =
+        document.createElement("span");
+
+    heart.className = "heart";
+
+    heart.innerText =
+        heartSymbols[
+            Math.floor(
+                Math.random() *
+                heartSymbols.length
+            )
+        ];
+
+    heart.style.left =
+        Math.random() * 100 + "%";
+
+    heart.style.fontSize =
+        12 + Math.random() * 20 + "px";
+
+    heart.style.animationDuration =
+        7 + Math.random() * 7 + "s";
+
+    heart.style.setProperty(
+        "--move",
+        (-100 + Math.random() * 200) + "px"
+    );
+
+    hearts.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 15000);
+}
+
+
+setInterval(createHeart, 450);
+
+
+/* =========================================================
+   REVEAL MESSAGE
+========================================================= */
+
+function reveal() {
+
+    const message =
+        document.getElementById("message");
+
+    message.classList.toggle("show");
+
+    if(message.classList.contains("show")) {
+
+        createExplosion();
+
+    }
+}
+
+
+/* =========================================================
+   HEART EXPLOSION
+========================================================= */
+
+function createExplosion() {
+
+    const emojis = [
+        "💗",
+        "💖",
+        "💕",
+        "💓",
+        "✨",
+        "♡"
+    ];
+
+
+    for(let i = 0; i < 45; i++) {
+
+        const item =
+            document.createElement("div");
+
+        item.innerText =
+            emojis[
+                Math.floor(
+                    Math.random() *
+                    emojis.length
+                )
+            ];
+
+        item.style.position =
+            "fixed";
+
+        item.style.left =
+            "50%";
+
+        item.style.top =
+            "50%";
+
+        item.style.zIndex =
+            "100";
+
+        item.style.pointerEvents =
+            "none";
+
+        item.style.fontSize =
+            15 + Math.random() * 25 + "px";
+
+
+        const angle =
+            Math.random() *
+            Math.PI *
+            2;
+
+        const distance =
+            100 +
+            Math.random() * 350;
+
+
+        const x =
+            Math.cos(angle) *
+            distance;
+
+        const y =
+            Math.sin(angle) *
+            distance;
+
+
+        item.animate(
+
+            [
+                {
+                    transform:
+                        "translate(-50%,-50%) scale(0)",
+
+                    opacity: 1
+                },
+
+                {
+                    transform:
+                        `translate(
+                            calc(-50% + ${x}px),
+                            calc(-50% + ${y}px)
+                        )
+                        scale(1.3)`,
+
+                    opacity: 0
+                }
+            ],
+
+            {
+                duration:
+                    900 +
+                    Math.random() * 900,
+
+                easing:
+                    "cubic-bezier(.15,.8,.25,1)"
+            }
+
+        );
+
+
+        document.body.appendChild(item);
+
+
+        setTimeout(() => {
+
+            item.remove();
+
+        }, 2000);
+    }
+}
+
+
+/* =========================================================
+   INITIAL HEARTS
+========================================================= */
+
+for(let i = 0; i < 12; i++) {
+
+    setTimeout(
+        createHeart,
+        i * 300
+    );
+
+}
+
+</script>
+
+</body>
+</html>
